@@ -68,7 +68,6 @@ public class ModelPnj extends ModelEntite{
         else{
             System.out.println("Vous ne pouvez pas mettre un nombre supérieur à 6 ou inferieur à 0");
         }
-        //faire un switch entre es différente classe
     }
 
     public void print() {
