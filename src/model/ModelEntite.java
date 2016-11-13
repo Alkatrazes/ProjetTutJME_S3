@@ -8,25 +8,48 @@ public class ModelEntite {
     protected int vie;
     protected int niveau;
     protected int vieMax = vie;
-    /*protected enum Genre {
-        HOMME(),
-        FEMMME,
-        NONDEF();
-    }*/
+    protected enum Genre {
+        HOMME("un homme"),
+        FEMMME("une femme"),
+        NONDEF("Indefinie");
+
+        private String genre = "";
+
+        Genre(String genre) {
+            this.genre = genre;
+        }
+
+        public String toString(){
+            return genre;
+        }
+    }
     protected String nom;
+    Genre baseGenre = Genre.NONDEF;
+    Genre genre;
 
     ModelEntite(String nom){
         vie = 150;
         niveau = 1;
-        //Genre genre = Genre.NONDEF;
         this.nom = nom;
+        this.genre = baseGenre;
     }
 
-    ModelEntite(int vie, int niveau, /*Genre genre,*/ String nom){
+    ModelEntite(int vie, int niveau,String nom){
         this.vie = vie;
-        this.niveau= niveau;
-        //Genre genre = genre;
+        this.niveau = niveau;
         this.nom = nom;
+        this.genre = baseGenre;
+
+        if(niveau > 1){
+            for(int i = 1; i < niveau; i++){
+                if((this.vie / 2) % 2 != 0){
+                    this.vie = this.vie + this.vie/2 + 1;
+                }
+                else{
+                    this.vie = this.vie + this.vie/2;
+                }
+            }
+        }
     }
 
     void setVie(int vie){
@@ -37,9 +60,24 @@ public class ModelEntite {
         this.niveau = niveau;
     }
 
-    /*void setGenre(){
-
-    }*/
+    void setGenre(int i){
+        if(i <= 3 && i > 0){
+            switch (i){
+                case 1 :
+                    genre = Genre.FEMMME;
+                    break;
+                case 2 :
+                    genre = Genre.HOMME;
+                    break;
+                case 3 :
+                    genre = Genre.NONDEF;
+                    break;
+            }
+        }
+        else{
+            System.out.println("VOus ne pouvez pas mettre un nombre superieur à 3 ou inferieur à 0");
+        }
+    }
 
     void setNom(String nom){
         this.nom = nom;
@@ -86,11 +124,11 @@ public class ModelEntite {
     }
 
     public void print() {
-        if(vie <= 0){
+        if(estMort()){
             System.out.println("Le personnage "+nom+" est actuellement mort.");
         }
         else{
-            System.out.println("Ce personnage s'apelle "+nom+", il est niveau "+niveau+" et il possede "+vie+" points de vie.");
+            System.out.println("Ce personnage s'apelle "+nom+",c'est "+genre+" de niveau "+niveau+" et possede "+vie+" points de vie.");
         }
     }
 }
