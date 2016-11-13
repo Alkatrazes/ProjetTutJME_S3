@@ -8,4 +8,10 @@ public class ModelHero extends ModelEntite {
     ModelHero(String nom){
         super(nom);
     }
+
+    ModelHero(int vie, int niveau, String nom){
+        super(vie,niveau,nom);
+    }
+
+
 }

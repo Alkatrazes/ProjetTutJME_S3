@@ -7,6 +7,7 @@ public class ModelEntite {
 
     protected int vie;
     protected int niveau;
+    protected int vieMax = vie;
     /*protected enum Genre {
         HOMME(),
         FEMMME,
@@ -64,6 +65,32 @@ public class ModelEntite {
         }
         else{
             vie = vie + vie/2;
+        }
+    }
+
+    public boolean estMort(){
+        if(vie <= 0){
+            return true;
+        }
+        return false;
+    }
+
+    public void perteVie(int degats){
+        vie -= degats;
+    }
+
+    public void regenVie(){
+        while(vie < vieMax){
+            //incrémenter de 1 la vie tout les x secondes
+        }
+    }
+
+    public void print() {
+        if(vie <= 0){
+            System.out.println("Le personnage "+nom+" est actuellement mort.");
+        }
+        else{
+            System.out.println("Ce personnage s'apelle "+nom+", il est niveau "+niveau+" et il possede "+vie+" points de vie.");
         }
     }
 }
