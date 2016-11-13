@@ -75,7 +75,7 @@ public class ModelEntite {
             }
         }
         else{
-            System.out.println("VOus ne pouvez pas mettre un nombre superieur à 3 ou inferieur à 0");
+            System.out.println("Vous ne pouvez pas mettre un nombre superieur à 3 ou inferieur à 0");
         }
     }
 
